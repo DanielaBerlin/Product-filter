@@ -11,13 +11,33 @@ for (let i = 0; i < btns.length; i++) {
     //Switch Tab content
     const filter = e.target.dataset.filter;
     storeProducts.forEach((product) => {
-      if (filter === "all") {
+      if (filter === 'all') {
         product.style.display = 'block';
       } else if (product.classList.contains(filter)) {
         product.style.display = 'block';
       } else {
-          product.style.display = "none";
+        product.style.display = 'none';
       }
     });
+  });
+}
+
+const search = document.getElementById('search');
+const productName = document.querySelectorAll('.product details h2');
+const noResult = document.querySelector('.noresult');
+
+search.addEventListener('keyup', filterProducts);
+
+function filterProducts() {
+  const text = e.target.value.toLowerCase();
+
+  productName.forEach((product) => {
+    const item = product.textContent;
+
+    if (item.toLowerCase().indexOf(text) != -1) {
+      product.parentElement.parentElement.style.display = 'block';
+    } else {
+      product.parentElement.parentElement.style.display = 'none';
+    }
   });
 }
