@@ -36,8 +36,10 @@ function filterProducts() {
 
     if (item.toLowerCase().indexOf(text) != -1) {
       product.parentElement.parentElement.style.display = 'block';
+      noResult.style.display = 'none';
     } else {
       product.parentElement.parentElement.style.display = 'none';
+      noResult.style.display = 'block';
     }
   });
 }
